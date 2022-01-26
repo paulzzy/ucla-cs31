@@ -1,0 +1,15 @@
+# Ignores extensionless files not in the root directory, i.e. within a project
+# directory. Building code leaves a lot of extensionless binaries around, which 
+# would otherwise clutter the repository. Root directory files such as LICENSE 
+# are not ignored.
+*/*
+!*.*
+
+# Each project is submitted as a single zip file, which contains some of the
+# files already present in the corresponding directory.
+*.zip
+*.dSYM
+
+.clang-format
+.DS_Store
+.vscode
