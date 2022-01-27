@@ -66,13 +66,16 @@ bool isValidCDPlayerString(string cd_player_actions) {
             case remove:
                 if (is_open && is_cd_inserted) {
                     is_cd_inserted = false;
+                    previous_track = 0;
+                    current_track = 0;
                 } else {
                     return false;
                 }
                 break;
             default:
                 // Check if a track is being played
-                if (isdigit(current_action) && !is_open && !is_cd_inserted) {
+                if (isdigit(current_action) && !is_open && is_cd_inserted &&
+                    is_playing) {
                     // Convert char to corresponding digit
                     current_track = current_action - '0';
                     if (current_track != previous_track + 1) {
