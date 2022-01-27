@@ -10,6 +10,12 @@
 *.zip
 *.dSYM
 
+# Exclude text files since they don't include source code, except for "🗿.txt"
+# (which shows the test cases I failed during grading, if any, and is not part
+# of project submissions).
+*.txt
+!🗿.txt
+
 .clang-format
 .DS_Store
 .vscode
