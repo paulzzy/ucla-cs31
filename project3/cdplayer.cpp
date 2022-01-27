@@ -106,7 +106,48 @@ int currentTrack(string cd_player_actions) {
 }
 
 int main() {
-    assert(isValidCDPlayerString("OICP123SP456SORICP123"));
+    const string valid_tests[] = {"OICP123SP456SORICP123",
+                                  "OIRICP123SOR",
+                                  "OICP123ORICP123",
+                                  "OICPO",
+                                  "OICPOR",
+                                  "OICP123O",
+                                  "OICP123SOCP456S",
+                                  "OICP123SOCP456S",
+                                  "OICP123P456SOR",
+                                  "OICPP123SOR",
+                                  "OICP123SORICP123456SOR",
+                                  "OICP123OC",
+                                  "OICP123OCP",
+                                  "OICP123OCP456"};
+    const string invalid_tests[] = {"xyz",
+                                    "oic",
+                                    "OIC xyz",
+                                    "P123S",
+                                    "OCIP123S",
+                                    "OICR",
+                                    "OCOICC",
+                                    "OCOICOO",
+                                    "OIP123",
+                                    "OCP123",
+                                    "OICS",
+                                    "OP123C",
+                                    "OIR123",
+                                    "OIR123P",
+                                    "OC123P",
+                                    "OICP123ORICP456",
+                                    "OICP147S",
+                                    "OICP123SOCP123S",
+                                    "OICP123P123456SOR",
+                                    "OICS123OC"};
 
+    for (const string test : valid_tests) {
+        assert(isValidCDPlayerString(test));
+    }
+    for (const string test : invalid_tests) {
+        assert(!isValidCDPlayerString(test));
+    }
+
+    cerr << "All tests succeeded" << endl;
     return 0;
 }
