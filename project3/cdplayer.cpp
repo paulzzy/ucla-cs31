@@ -106,9 +106,6 @@ int currentTrack(string cd_player_actions) {
 }
 
 int main() {
-    string cd_player_actions;
-    getline(cin, cd_player_actions);
-
     assert(isValidCDPlayerString("OICP123SP456SORICP123"));
 
     return 0;
