@@ -41,6 +41,7 @@ CdPlayerState getCdPlayerState(string cd_player_actions) {
             case open:
                 if (!cd_player.is_open) {
                     cd_player.is_open = true;
+                    cd_player.is_playing = false;
                 } else {
                     return cd_player;
                 }
@@ -67,7 +68,7 @@ CdPlayerState getCdPlayerState(string cd_player_actions) {
                 }
                 break;
             case stop:
-                if (cd_player.is_playing) {
+                if (cd_player.is_playing || cd_player.is_open) {
                     cd_player.is_playing = false;
                 } else {
                     return cd_player;
@@ -133,65 +134,71 @@ int currentTrack(string cd_player_actions) {
 }
 
 int main() {
-    const string valid_tests[] = {"OICP123SP456SORICP123",
-                                  "OIRICP123SOR",
-                                  "OICP123ORICP123",
-                                  "OICPO",
-                                  "OICPOR",
-                                  "OICP123O",
-                                  "OICP123SOCP456S",
-                                  "OICP123SOCP456S",
-                                  "OICP123P456SOR",
-                                  "OICPP123SOR",
-                                  "OICP123SORICP123456SOR",
-                                  "OICP123OC",
-                                  "OICP123OCP",
-                                  "OICP123OCP456",
-                                  "OICP123ORCS",
-                                  "OC",
-                                  "OCOIC",
-                                  "OCOICO",
-                                  "OICP123OS",
-                                  "OICP123ORS",
-                                  "OICP123ORCS",
-                                  "OICP123ORIS"};
-    const string invalid_tests[] = {
-        "xyz",
-        "oic",
-        "OIC xyz",
-        "P123S",
-        "OCIP123S",
-        "OICR",
-        "OCOICC",
-        "OCOICOO",
-        "OIP123",
-        "OCP123",
-        "OICS",
-        "OP123C",
-        "OIR123",
-        "OIR123P",
-        "OC123P",
-        "OICP123ORICP456",
-        "OICP147S",
-        "OICP123SOCP123S",
-        "OICP123P123456SOR",
-        "OICS123OC",
+    const string valid_tests[] = {
+        "OICP123SP456SORICP123",
+        "OIRICP123SOR",
+        "OICP123ORICP123",
+        "OICPO",
+        "OICPOR",
+        "OICP123O",
+        "OICP123SOCP456S",
+        "OICP123SOCP456S",
+        "OICP123P456SOR",
+        "OICPP123SOR",
+        "OICP123SORICP123456SOR",
+        "OICP123OC",
+        "OICP123OCP",
+        "OICP123OCP456",
+        "OC",
+        "OCOIC",
+        "OCOICO",
+        "OICP123OS",
+        "OICP123ORS",
+        "OICP123ORCS",
+        "OICP123ORIS",
+        "OICPS",
+        "OICPSPSPS"
     };
+    const string invalid_tests[] = {"xyz",
+                                    "oic",
+                                    "OIC xyz",
+                                    "P123S",
+                                    "OCIP123S",
+                                    "OICR",
+                                    "OCOICC",
+                                    "OCOICOO",
+                                    "OIP123",
+                                    "OCP123",
+                                    "OICS",
+                                    "OP123C",
+                                    "OIR123",
+                                    "OIR123P",
+                                    "OC123P",
+                                    "OICP123ORICP456",
+                                    "OICP147S",
+                                    "OICP123SOCP123S",
+                                    "OICP123P123456SOR",
+                                    "OICS123OC",
+                                    "OICP123OCS",
+                                    "OICP123ORICS",
+                                    "OICP123ORIC123"};
 
-    std::cerr << boolalpha;
-    for (const string& test : valid_tests) {
-        std::cerr << test << "\t" << isValidCDPlayerString(test) << "\t"
-                  << isOpen(test) << "\t" << hasCD(test) << "\t"
-                  << totalTracksPlayed(test) << "\t" << currentTrack(test)
-                  << endl;
-    }
-    std::cerr << "=====" << endl;
-    for (const string& test : invalid_tests) {
-        std::cerr << test << "\t" << isValidCDPlayerString(test) << "\t"
-                  << isOpen(test) << "\t" << hasCD(test) << "\t"
-                  << totalTracksPlayed(test) << "\t" << currentTrack(test)
-                  << endl;
-    }
+    // std::cerr << boolalpha;
+    // for (const string& test : valid_tests) {
+    //     std::cerr << test << "\t" << isValidCDPlayerString(test) << "\t"
+    //               << isOpen(test) << "\t" << hasCD(test) << "\t"
+    //               << totalTracksPlayed(test) << "\t" << currentTrack(test)
+    //               << endl;
+    // }
+    // std::cerr << "=====" << endl;
+    // for (const string& test : invalid_tests) {
+    //     std::cerr << test << "\t" << isValidCDPlayerString(test) << "\t"
+    //               << isOpen(test) << "\t" << hasCD(test) << "\t"
+    //               << totalTracksPlayed(test) << "\t" << currentTrack(test)
+    //               << endl;
+    // }
+
+    isValidCDPlayerString("OICP123ORCS");
 
     std::cerr << "All tests succeeded" << endl;
     return 0;
