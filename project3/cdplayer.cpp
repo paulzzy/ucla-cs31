@@ -124,7 +124,11 @@ int totalTracksPlayed(string cd_player_actions) {
 }
 
 int currentTrack(string cd_player_actions) {
-    return 0;
+    CdPlayerState cd_player = getCdPlayerState(cd_player_actions);
+    // Returns the next track that would be played, if valid.
+    return cd_player.is_valid && cd_player.is_cd_inserted
+               ? cd_player.current_track + 1
+               : -1;
 }
 
 int main() {
