@@ -108,6 +108,10 @@ bool isValidCDPlayerString(string cd_player_actions) {
     return getCdPlayerState(cd_player_actions).is_valid;
 }
 
+bool isOpen(string cd_player_actions) {
+    return getCdPlayerState(cd_player_actions).is_open;
+}
+
 bool hasCD(string cd_player_actions) {
     return false;
 }
