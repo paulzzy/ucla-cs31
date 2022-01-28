@@ -3,8 +3,22 @@
 
 using namespace std;
 
-bool isValidCDPlayerString(string cd_player_actions) {
-    // Possible CD player actions
+// Track state of CD player
+struct CdPlayerState {
+    bool is_valid = false;
+    bool is_open = false;
+    bool is_cd_inserted = false;
+    bool is_playing = false;
+    int previous_track = 0;
+    int current_track = 0;
+    int total_tracks_played = 0;
+};
+
+CdPlayerState getCdPlayerState(string cd_player_actions) {
+    CdPlayerState cd_player;
+    cd_player.is_valid = false;
+
+    // Possible CD player actions, excluding tracks
     const char open = 'O';
     const char insert = 'I';
     const char close = 'C';
@@ -12,88 +26,86 @@ bool isValidCDPlayerString(string cd_player_actions) {
     const char stop = 'S';
     const char remove = 'R';
 
-    // Initial check
-    if (cd_player_actions.size() < 1 || cd_player_actions[0] != open) {
-        return false;
+    // Initial check for length and first char, which must be 'O'
+    if (cd_player_actions.size() < 1 || cd_player_actions.at(0) != open) {
+        return cd_player;
+    } else {
+        cd_player.is_open = true;
     }
 
-    // Track state of CD player
-    bool is_open = false;
-    bool is_cd_inserted = false;
-    bool is_playing = false;
-    int previous_track = 0;
-    int current_track = 0;
-
-    for (size_t i = 0; i < cd_player_actions.size(); i++) {
-        const char current_action = cd_player_actions[i];
+    // Skip first char since it was already checked
+    for (size_t i = 1; i < cd_player_actions.size(); i++) {
+        const char current_action = cd_player_actions.at(i);
 
         switch (current_action) {
             case open:
-                if (!is_open) {
-                    is_open = true;
+                if (!cd_player.is_open) {
+                    cd_player.is_open = true;
                 } else {
-                    return false;
+                    return cd_player;
                 }
                 break;
             case insert:
-                if (is_open && !is_cd_inserted) {
-                    is_cd_inserted = true;
+                if (cd_player.is_open && !cd_player.is_cd_inserted) {
+                    cd_player.is_cd_inserted = true;
                 } else {
-                    return false;
+                    return cd_player;
                 }
                 break;
             case close:
-                if (is_open) {
-                    is_open = false;
+                if (cd_player.is_open) {
+                    cd_player.is_open = false;
                 } else {
-                    return false;
+                    return cd_player;
                 }
                 break;
             case play:
-                if (!is_open && is_cd_inserted) {
-                    is_playing = true;
+                if (!cd_player.is_open && cd_player.is_cd_inserted) {
+                    cd_player.is_playing = true;
                 } else {
-                    return false;
+                    return cd_player;
                 }
                 break;
             case stop:
-                if (is_playing) {
-                    is_playing = false;
+                if (cd_player.is_playing) {
+                    cd_player.is_playing = false;
                 } else {
-                    return false;
+                    return cd_player;
                 }
                 break;
             case remove:
-                if (is_open && is_cd_inserted) {
-                    is_cd_inserted = false;
-                    previous_track = 0;
-                    current_track = 0;
+                if (cd_player.is_open && cd_player.is_cd_inserted) {
+                    cd_player.is_cd_inserted = false;
+                    cd_player.previous_track = 0;
+                    cd_player.current_track = 0;
                 } else {
-                    return false;
+                    return cd_player;
                 }
                 break;
             default:
                 // Check if a track is being played
-                if (isdigit(current_action) && !is_open && is_cd_inserted &&
-                    is_playing) {
-                    // Convert char to corresponding digit
-                    current_track = current_action - '0';
-                    if (current_track != previous_track + 1) {
-                        return false;
+                if (isdigit(current_action) && !cd_player.is_open &&
+                    cd_player.is_cd_inserted && cd_player.is_playing) {
+                    // Convert char to corresponding integer digit
+                    cd_player.current_track = current_action - '0';
+                    if (cd_player.current_track !=
+                        cd_player.previous_track + 1) {
+                        return cd_player;
                     }
-                    previous_track++;
+                    cd_player.previous_track++;
                 } else {
-                    return false;
+                    return cd_player;
                 }
                 break;
         }
     }
 
-    return true;
+    cd_player.is_valid = true;
+    return cd_player;
 }
 
-bool isOpen(string cd_player_actions) {
-    return false;
+bool isValidCDPlayerString(string cd_player_actions) {
+    return getCdPlayerState(cd_player_actions).is_valid;
 }
 
 bool hasCD(string cd_player_actions) {
