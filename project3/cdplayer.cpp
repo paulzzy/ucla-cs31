@@ -119,7 +119,8 @@ bool hasCD(string cd_player_actions) {
 }
 
 int totalTracksPlayed(string cd_player_actions) {
-    return 0;
+    CdPlayerState cd_player = getCdPlayerState(cd_player_actions);
+    return cd_player.is_valid ? cd_player.total_tracks_played : -1;
 }
 
 int currentTrack(string cd_player_actions) {
