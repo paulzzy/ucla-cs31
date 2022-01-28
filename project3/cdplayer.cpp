@@ -113,7 +113,7 @@ bool isOpen(string cd_player_actions) {
 }
 
 bool hasCD(string cd_player_actions) {
-    return false;
+    return getCdPlayerState(cd_player_actions).is_cd_inserted;
 }
 
 int totalTracksPlayed(string cd_player_actions) {
