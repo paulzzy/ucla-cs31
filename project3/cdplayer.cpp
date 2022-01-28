@@ -109,11 +109,13 @@ bool isValidCDPlayerString(string cd_player_actions) {
 }
 
 bool isOpen(string cd_player_actions) {
-    return getCdPlayerState(cd_player_actions).is_open;
+    CdPlayerState cd_player = getCdPlayerState(cd_player_actions);
+    return cd_player.is_open && cd_player.is_valid;
 }
 
 bool hasCD(string cd_player_actions) {
-    return getCdPlayerState(cd_player_actions).is_cd_inserted;
+    CdPlayerState cd_player = getCdPlayerState(cd_player_actions);
+    return cd_player.is_cd_inserted && cd_player.is_valid;
 }
 
 int totalTracksPlayed(string cd_player_actions) {
