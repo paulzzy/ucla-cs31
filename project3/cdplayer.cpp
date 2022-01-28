@@ -93,6 +93,7 @@ CdPlayerState getCdPlayerState(string cd_player_actions) {
                         return cd_player;
                     }
                     cd_player.previous_track++;
+                    cd_player.total_tracks_played++;
                 } else {
                     return cd_player;
                 }
@@ -145,35 +146,53 @@ int main() {
                                   "OICP123SORICP123456SOR",
                                   "OICP123OC",
                                   "OICP123OCP",
-                                  "OICP123OCP456"};
-    const string invalid_tests[] = {"xyz",
-                                    "oic",
-                                    "OIC xyz",
-                                    "P123S",
-                                    "OCIP123S",
-                                    "OICR",
-                                    "OCOICC",
-                                    "OCOICOO",
-                                    "OIP123",
-                                    "OCP123",
-                                    "OICS",
-                                    "OP123C",
-                                    "OIR123",
-                                    "OIR123P",
-                                    "OC123P",
-                                    "OICP123ORICP456",
-                                    "OICP147S",
-                                    "OICP123SOCP123S",
-                                    "OICP123P123456SOR",
-                                    "OICS123OC"};
+                                  "OICP123OCP456",
+                                  "OICP123ORCS",
+                                  "OC",
+                                  "OCOIC",
+                                  "OCOICO",
+                                  "OICP123OS",
+                                  "OICP123ORS",
+                                  "OICP123ORCS",
+                                  "OICP123ORIS"};
+    const string invalid_tests[] = {
+        "xyz",
+        "oic",
+        "OIC xyz",
+        "P123S",
+        "OCIP123S",
+        "OICR",
+        "OCOICC",
+        "OCOICOO",
+        "OIP123",
+        "OCP123",
+        "OICS",
+        "OP123C",
+        "OIR123",
+        "OIR123P",
+        "OC123P",
+        "OICP123ORICP456",
+        "OICP147S",
+        "OICP123SOCP123S",
+        "OICP123P123456SOR",
+        "OICS123OC",
+    };
 
-    for (const string test : valid_tests) {
-        assert(isValidCDPlayerString(test));
+    std::cerr << boolalpha;
+    for (const string& test : valid_tests) {
+        std::cerr << test << "\t" << isValidCDPlayerString(test) << "\t"
+                  << isOpen(test) << "\t" << hasCD(test) << "\t"
+                  << totalTracksPlayed(test) << "\t" << currentTrack(test)
+                  << endl;
     }
-    for (const string test : invalid_tests) {
-        assert(!isValidCDPlayerString(test));
+    std::cerr << "=====" << endl;
+    for (const string& test : invalid_tests) {
+        std::cerr << test << "\t" << isValidCDPlayerString(test) << "\t"
+                  << isOpen(test) << "\t" << hasCD(test) << "\t"
+                  << totalTracksPlayed(test) << "\t" << currentTrack(test)
+                  << endl;
     }
 
-    cerr << "All tests succeeded" << endl;
+    std::cerr << "All tests succeeded" << endl;
     return 0;
 }
