@@ -9,6 +9,12 @@ struct CdPlayerState {
     bool is_open = false;
     bool is_cd_inserted = false;
     bool is_playing = false;
+    bool is_play_button_pressed =
+        false;  // Opening the CD player stops playback, but the "Stop" action
+                // is still allowed to occur. Prof. Stahl explicitly confirmed
+                // this. To accomplish this, I think of the "Stop" action as
+                // deselecting the "Play" action, which either stops playback or
+                // does nothing if playback is already stopped.
     int previous_track = 0;
     int current_track = 0;
     int total_tracks_played = 0;
@@ -63,13 +69,15 @@ CdPlayerState getCdPlayerState(string cd_player_actions) {
             case play:
                 if (!cd_player.is_open && cd_player.is_cd_inserted) {
                     cd_player.is_playing = true;
+                    cd_player.is_play_button_pressed = true;
                 } else {
                     return cd_player;
                 }
                 break;
             case stop:
-                if (cd_player.is_playing || cd_player.is_open) {
+                if (cd_player.is_play_button_pressed || cd_player.is_open) {
                     cd_player.is_playing = false;
+                    cd_player.is_play_button_pressed = false;
                 } else {
                     return cd_player;
                 }
