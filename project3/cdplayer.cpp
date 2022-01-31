@@ -142,6 +142,9 @@ int currentTrack(string cd_player_actions) {
 }
 
 int main() {
+    const string green_text = "\033[32m";
+    const string blue_text = "\033[34m";
+    const string reset_text = "\033[0m";
     const string valid_tests[] = {
         "OICP123SP456SORICP123",
         "OIRICP123SOR",
@@ -149,7 +152,6 @@ int main() {
         "OICPO",
         "OICPOR",
         "OICP123O",
-        "OICP123SOCP456S",
         "OICP123SOCP456S",
         "OICP123P456SOR",
         "OICPP123SOR",
@@ -165,49 +167,84 @@ int main() {
         "OICP123ORCS",
         "OICP123ORIS",
         "OICPS",
-        "OICPSPSPS"
+        "OICPSPSPS",
+        "OICP123SP456",
+        "OICP123OCS",
+        "OCOICP1234SOCOCP5678",
+        "OCOCOCOC",
+        "OICP123ORICS",
+        "OICP1P23SOR",
+        "OIC",
+        "OICORIRIC",
+        "OIRIR",
+        "OIRICORIC",
+        "OICORICPOCPOCPORIRICP",
+        "OICP",
+        "OICOCORI",
+        "OICP1",
+        "OICP123456789",
+        "OICP123SP",
+        "OICP123",
+        "OICP12345SOC",
+        "OICP123SOR",
+        "OICP123SORI",
+        "OIRC",
+        "OICOCOCOCOCO",
+        "OICORIRCOICPSO",
+        "OICPP12PPPPPPPPPPS",
+        "O",
     };
-    const string invalid_tests[] = {"xyz",
-                                    "oic",
-                                    "OIC xyz",
-                                    "P123S",
-                                    "OCIP123S",
-                                    "OICR",
-                                    "OCOICC",
-                                    "OCOICOO",
-                                    "OIP123",
-                                    "OCP123",
-                                    "OICS",
-                                    "OP123C",
-                                    "OIR123",
-                                    "OIR123P",
-                                    "OC123P",
-                                    "OICP123ORICP456",
-                                    "OICP147S",
-                                    "OICP123SOCP123S",
-                                    "OICP123P123456SOR",
-                                    "OICS123OC",
-                                    "OICP123OCS",
-                                    "OICP123ORICS",
-                                    "OICP123ORIC123"};
+    const string invalid_tests[] = {
+        "xyz",
+        "oic",
+        "OIC xyz",
+        "P123S",
+        "OCIP123S",
+        "OICR",
+        "OCOICC",
+        "OCOICOO",
+        "OIP123",
+        "OCP123",
+        "OICS",
+        "OP123C",
+        "OIR123",
+        "OIR123P",
+        "OC123P",
+        "OICP123ORICP456",
+        "OICP147S",
+        "OICP123SOCP123S",
+        "OICP123P123456SOR",
+        "OICS123OC",
+        "OICP123ORIC123",
+        "OICP123OC456",
+        "",
+        "    ",
+        "OICOI",
+        "OOOOcyf",
+        "OICP123P45OC6",
+        "OIP",
+        "OIRIRCP1SOIRC",
+    };
 
-    // std::cerr << boolalpha;
-    // for (const string& test : valid_tests) {
-    //     std::cerr << test << "\t" << isValidCDPlayerString(test) << "\t"
-    //               << isOpen(test) << "\t" << hasCD(test) << "\t"
-    //               << totalTracksPlayed(test) << "\t" << currentTrack(test)
-    //               << endl;
-    // }
-    // std::cerr << "=====" << endl;
-    // for (const string& test : invalid_tests) {
-    //     std::cerr << test << "\t" << isValidCDPlayerString(test) << "\t"
-    //               << isOpen(test) << "\t" << hasCD(test) << "\t"
-    //               << totalTracksPlayed(test) << "\t" << currentTrack(test)
-    //               << endl;
-    // }
+    std::cerr << boolalpha;
+    for (const string& test : valid_tests) {
+        std::cerr << test << "\t"
+                  << (isValidCDPlayerString(test) ? green_text : blue_text)
+                  << isValidCDPlayerString(test) << reset_text << "\t"
+                  << isOpen(test) << "\t" << hasCD(test) << "\t"
+                  << totalTracksPlayed(test) << "\t" << currentTrack(test)
+                  << "\n";
+    }
+    std::cerr << "\n==========\n\n";
+    for (const string& test : invalid_tests) {
+        std::cerr << test << "\t"
+                  << (isValidCDPlayerString(test) ? green_text : blue_text)
+                  << isValidCDPlayerString(test) << reset_text << "\t"
+                  << isOpen(test) << "\t" << hasCD(test) << "\t"
+                  << totalTracksPlayed(test) << "\t" << currentTrack(test)
+                  << "\n";
+    }
 
-    isValidCDPlayerString("OICP123ORCS");
-
-    std::cerr << "All tests succeeded" << endl;
+    std::cerr << "End of tests" << endl;
     return 0;
 }
