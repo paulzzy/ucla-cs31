@@ -42,7 +42,26 @@ int countCommonElements(const string array1[], int n1, const string array2[],
     }
 }
 
-int countVowels(const string array[], int n);
+int countVowels(const string array[], int n) {
+    if (n > 0) {
+        int num_vowels = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < array[i].length(); j++) {
+                const char letter = tolower(array[i].at(j));
+                num_vowels = letter == 'a' || letter == 'e' || letter == 'i' ||
+                                     letter == 'o' || letter == 'u' ||
+                                     letter == 'y'
+                                 ? num_vowels + 1
+                                 : num_vowels;
+            }
+        }
+
+        return num_vowels;
+    } else {
+        return -1;
+    }
+}
 
 bool hasThreeOfX(const string array[], int n, string x);
 
