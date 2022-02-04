@@ -30,7 +30,7 @@ int countCommonElements(const string array1[], int n1, const string array2[],
 
         for (int i = 0; i < n1; i++) {
             for (int j = 0; j < n2; j++) {
-                if (array1[n1] == array2[n2]) {
+                if (array1[i] == array2[j]) {
                     num_common_elements++;
                 }
             }
