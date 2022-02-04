@@ -24,7 +24,23 @@ int locateMinimum(const string array[], int n) {
 }
 
 int countCommonElements(const string array1[], int n1, const string array2[],
-                        int n2);
+                        int n2) {
+    if (n1 > 0 && n2 > 0) {
+        int num_common_elements = 0;
+
+        for (int i = 0; i < n1; i++) {
+            for (int j = 0; j < n2; j++) {
+                if (array1[n1] == array2[n2]) {
+                    num_common_elements++;
+                }
+            }
+        }
+
+        return num_common_elements;
+    } else {
+        return -1;
+    }
+}
 
 int countVowels(const string array[], int n);
 
