@@ -77,7 +77,43 @@ bool hasThreeOfX(const string array[], int n, string x) {
     }
 }
 
-string majorityElement(const string array[], int n);
+// Uses Boyer–Moore majority vote algorithm
+string majorityElement(const string array[], int n) {
+    if (n > 1) {
+        string majority_candidate = array[0];
+        int element_count = 1;
+        int majority_threshold = n / 2;
+        int majority_candidate_count = 0;
+
+        // First pass finds the majority element, if it exists
+        for (int i = 1; i < n; i++) {
+            if (array[i] == majority_candidate) {
+                element_count++;
+            } else {
+                element_count--;
+
+                majority_candidate =
+                    element_count == 0 ? array[i] : majority_candidate;
+            }
+        }
+
+        // Second pass to check that majority_candidate is actually the majority
+        // element
+        for (int i = 0; i < n; i++) {
+            majority_candidate_count = array[i] == majority_candidate
+                                           ? majority_candidate_count + 1
+                                           : majority_candidate_count;
+        }
+
+        return majority_candidate_count > majority_threshold
+                   ? majority_candidate
+                   : "";
+    } else if (n == 0) {
+        return array[0];
+    } else {
+        return "";
+    }
+}
 
 bool shiftRight(string array[], int n, int amount, string placeholder);
 
