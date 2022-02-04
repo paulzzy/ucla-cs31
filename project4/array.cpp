@@ -63,7 +63,19 @@ int countVowels(const string array[], int n) {
     }
 }
 
-bool hasThreeOfX(const string array[], int n, string x);
+bool hasThreeOfX(const string array[], int n, string x) {
+    if (n > 0) {
+        int num_x = 0;
+
+        for (int i = 0; i < n; i++) {
+            num_x = array[i] == x ? num_x + 1 : num_x;
+        }
+
+        return num_x == 3;
+    } else {
+        return false;
+    }
+}
 
 string majorityElement(const string array[], int n);
 
