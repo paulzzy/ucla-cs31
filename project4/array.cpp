@@ -115,7 +115,19 @@ string majorityElement(const string array[], int n) {
     }
 }
 
-bool shiftRight(string array[], int n, int amount, string placeholder);
+bool shiftRight(string array[], int n, int amount, string placeholder) {
+    if (n > 0 && amount > 0) {
+        for (int i = amount; i < n; i++) {
+            array[i] = array[i - amount];
+        }
+
+        for (int i = 0; i < amount; i++) {
+            array[i] = placeholder;
+        }
+    } else {
+        return false;
+    }
+}
 
 bool rotateLeft(string array[], int n, int amount);
 
