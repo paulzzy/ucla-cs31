@@ -138,7 +138,33 @@ bool shiftRight(string array[], int n, int amount, string placeholder) {
     }
 }
 
-bool rotateLeft(string array[], int n, int amount);
+void reverseArray(string array[], int start, int end) {
+    // Note that reversal is only done up to end - 1
+    for (int i = start; i < end / 2; i++) {
+        string temp = array[i];
+        array[i] = array[end - i];
+        array[i] = temp;
+    }
+}
+
+bool rotateLeft(string array[], int n, int amount) {
+    // Rotating by more than n is equivalent to rotating by modulo n. For
+    // example, rotating by 9 is equivalent to rotating by 1.
+    amount = amount % n;
+
+    // array stays the same when amount and n are the same
+    if (n > 0 && amount != n) {
+        reverseArray(array, 0, n);
+        // Only reverses elements rotated to beginning of array
+        reverseArray(array, 0, amount);
+        // Only reverses elements moved by one index
+        reverseArray(array, amount, n);
+
+        return true;
+    } else {
+        return false;
+    }
+}
 
 int replaceAll(string array[], int n, char letterToReplace, char letterToFill);
 
