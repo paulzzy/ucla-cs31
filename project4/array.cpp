@@ -124,6 +124,8 @@ bool shiftRight(string array[], int n, int amount, string placeholder) {
         for (int i = 0; i < amount; i++) {
             array[i] = placeholder;
         }
+
+        return true;
     } else {
         return false;
     }
