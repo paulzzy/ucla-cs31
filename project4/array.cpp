@@ -166,6 +166,23 @@ bool rotateLeft(string array[], int n, int amount) {
     }
 }
 
-int replaceAll(string array[], int n, char letterToReplace, char letterToFill);
+int replaceAll(string array[], int n, char letterToReplace, char letterToFill) {
+    if (n > 0) {
+        int num_replacements = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (size_t j = 0; j < array[i].length(); j++) {
+                if (array[i].at(i) == letterToReplace) {
+                    array[i].at(i) = letterToFill;
+                    num_replacements++;
+                }
+            }
+        }
+
+        return num_replacements;
+    } else {
+        return -1;
+    }
+}
 
 int main() { return 0; }
