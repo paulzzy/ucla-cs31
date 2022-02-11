@@ -147,17 +147,20 @@ void reverseArray(string array[], int start, int end) {
 }
 
 bool rotateLeft(string array[], int n, int amount) {
-    // Rotating by more than n is equivalent to rotating by modulo n. For
-    // example, rotating by 9 is equivalent to rotating by 1.
-    amount = amount % n;
-
-    // array stays the same when amount and n are the same
-    if (n > 0 && amount != n) {
+    // array stays the same when amount is a multiple of n
+    if (n > 0 && amount > 0 && amount % n != 0) {
+        // Rotating by more than n is equivalent to rotating by modulo n. For
+        // example, rotating by 9 is equivalent to rotating by 1. Modulo
+        // operation is performed inside the if statement to avoid
+        // division-by-zero errors.
+        amount = amount % n;
         reverseArray(array, 0, n);
-        // Only reverses elements rotated to beginning of array
-        reverseArray(array, 0, amount);
-        // Only reverses elements moved by one index
-        reverseArray(array, amount, n);
+        // Reverses elements that are not moved to the end of the array when
+        // rotating left
+        reverseArray(array, 0, n - amount);
+        // Reverses elements that are moved to the end of the array when
+        // rotating left
+        reverseArray(array, n - amount, n);
 
         return true;
     } else {
