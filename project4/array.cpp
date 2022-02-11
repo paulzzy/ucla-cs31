@@ -174,8 +174,8 @@ int replaceAll(string array[], int n, char letterToReplace, char letterToFill) {
 
         for (int i = 0; i < n; i++) {
             for (size_t j = 0; j < array[i].length(); j++) {
-                if (array[i].at(i) == letterToReplace) {
-                    array[i].at(i) = letterToFill;
+                if (array[i].at(j) == letterToReplace) {
+                    array[i].at(j) = letterToFill;
                     num_replacements++;
                 }
             }
