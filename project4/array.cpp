@@ -121,7 +121,8 @@ bool shiftRight(string array[], int n, int amount, string placeholder) {
 
         return true;
     } else if (n > 0 && amount > 0) {
-        for (int i = amount; i < n; i++) {
+        // Moves each element forward by one index, down to amount
+        for (int i = n - 1; i >= amount; i--) {
             array[i] = array[i - amount];
         }
 
