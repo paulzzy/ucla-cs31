@@ -108,8 +108,6 @@ string majorityElement(const string array[], int n) {
         return majority_candidate_count > majority_threshold
                    ? majority_candidate
                    : "";
-    } else if (n == 0) {
-        return array[0];
     } else {
         return "";
     }
