@@ -137,11 +137,12 @@ bool shiftRight(string array[], int n, int amount, string placeholder) {
 }
 
 void reverseArray(string array[], int start, int end) {
-    // Note that reversal is only done up to end - 1
+    // Note that start to end - 1 is reversed, inclusive
     for (int i = start; i < end / 2; i++) {
+        int partner = end - i - 1;
         string temp = array[i];
-        array[i] = array[end - i];
-        array[i] = temp;
+        array[i] = array[partner];
+        array[partner] = temp;
     }
 }
 
