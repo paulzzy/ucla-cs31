@@ -114,9 +114,8 @@ string majorityElement(const string array[], int n) {
 }
 
 bool shiftRight(string array[], int n, int amount, string placeholder) {
-    if (amount > n) {
-        for (int i = 0; i < n; i++)
-        {
+    if (n > 0 && amount > n) {
+        for (int i = 0; i < n; i++) {
             array[i] = placeholder;
         }
 
