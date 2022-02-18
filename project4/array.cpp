@@ -138,10 +138,12 @@ bool shiftRight(string array[], int n, int amount, string placeholder) {
     }
 }
 
+// Helper function for rotateLeft()
 void reverseArray(string array[], int start, int end) {
-    // Note that start to end - 1 is reversed, inclusive
-    for (int i = start; i < end / 2; i++) {
-        int partner = end - i - 1;
+    // Note that start to end is reversed, inclusive
+    const int halfway = (end - start + 1) / 2 + start;
+    for (int i = start; i < halfway; i++) {
+        const int partner = end - (i - start);
         string temp = array[i];
         array[i] = array[partner];
         array[partner] = temp;
