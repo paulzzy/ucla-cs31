@@ -180,6 +180,7 @@ int replaceAll(string array[], int n, char letterToReplace, char letterToFill) {
                 if (array[i].at(j) == letterToReplace) {
                     array[i].at(j) = letterToFill;
                     num_replacements++;
+                    array[i].replace(j, 1, 1, letterToFill);
                 }
             }
         }
