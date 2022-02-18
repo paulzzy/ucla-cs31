@@ -8,10 +8,12 @@ int locateMinimum(const string array[], int n) {
     // advance
     if (n > 1) {
         int min_value_index = 0;
+        string min_value = array[0];
 
         for (int i = 1; i < n; i++) {
-            if (array[n] < array[n - 1]) {
+            if (array[i] < min_value) {
                 min_value_index = i;
+                min_value = array[i];
             }
         }
 
