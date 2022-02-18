@@ -2,9 +2,7 @@
 
 ## What am I looking at?
 
-To see the instructions and tech spec for a project, open `instructions.html` in the corresponding directory.
-
-Likewise, grading results (particularly failed test cases) for a project can be found in `🗿.txt`. If no test cases were failed, the file will only contain "🤩".
+Grading results (particularly failed test cases) for a project can be found in `🗿.txt`. If no test cases were failed, the file will only contain "🤩".
 
 All other files in a project directory are part of my submission for that assignment.
 
