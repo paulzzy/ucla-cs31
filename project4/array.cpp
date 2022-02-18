@@ -83,19 +83,19 @@ bool hasThreeOfX(const string array[], int n, string x) {
 string majorityElement(const string array[], int n) {
     if (n > 1) {
         string majority_candidate = array[0];
-        int element_count = 1;
+        int candidate_count = 1;
         int majority_threshold = n / 2;
         int majority_candidate_count = 0;
 
         // First pass finds the majority element, if it exists
         for (int i = 1; i < n; i++) {
             if (array[i] == majority_candidate) {
-                element_count++;
+                candidate_count++;
             } else {
-                element_count--;
+                candidate_count--;
 
                 majority_candidate =
-                    element_count == 0 ? array[i] : majority_candidate;
+                    candidate_count <= 0 ? array[i] : majority_candidate;
             }
         }
 
