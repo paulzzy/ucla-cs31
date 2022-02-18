@@ -12,43 +12,21 @@ class GymMember {
     int mWorkoutCount = 0;
 
    public:
-    GymMember(std::string name, std::string accountnumber, Kind kind) {
-        mName = name;
-        mAccountNumber = accountnumber;
-        mKind = kind;
-    }
+    GymMember(std::string name, std::string accountnumber, Kind kind);
 
-    int workoutsThisMonth() { return mWorkoutCount; }
+    int workoutsThisMonth();
 
-    void startNewMonth() { mWorkoutCount = 0; }
+    void startNewMonth();
 
-    void newWorkout() { mWorkoutCount++; }
+    void newWorkout();
 
-    Kind getKind() { return mKind; }
+    Kind getKind();
 
-    std::string getKindAsString() {
-        switch (mKind) {
-            case OTHER:
-                return "OTHER";
-                break;
-            case REGULAR:
-                return "REGULAR";
-                break;
-            case PREMIER:
-                return "PREMIER";
-                break;
-            case EXECUTIVE:
-                return "EXECUTIVE";
-                break;
-            default:
-                return "SOMETHING_HAS_GONE_TERRIBLY_WRONG";
-                break;
-        }
-    }
+    std::string getKindAsString();
 
-    std::string getName() { return mName; }
+    std::string getName();
 
-    std::string getAccountNumber() { return mAccountNumber; }
+    std::string getAccountNumber();
 };
 
 #endif
