@@ -158,13 +158,12 @@ bool rotateLeft(string array[], int n, int amount) {
         // operation is performed inside the if statement to avoid
         // division-by-zero errors.
         amount = amount % n;
-        reverseArray(array, 0, n);
-        // Reverses elements that are not moved to the end of the array when
-        // rotating left
-        reverseArray(array, 0, n - amount);
-        // Reverses elements that are moved to the end of the array when
-        // rotating left
-        reverseArray(array, n - amount, n);
+        reverseArray(array, 0, n - 1);
+        // Reverses elements that only move left and are not wrapped to the
+        // right end of the array
+        reverseArray(array, 0, n - amount - 1);
+        // Reverses elements that are wrapped to the right end of the array
+        reverseArray(array, n - amount, n - 1);
 
         return true;
     } else {
