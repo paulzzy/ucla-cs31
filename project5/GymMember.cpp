@@ -1,10 +1,7 @@
 #include "GymMember.h"
 
-GymMember::GymMember(std::string name, std::string accountnumber, Kind kind) {
-    mName = name;
-    mAccountNumber = accountnumber;
-    mKind = kind;
-}
+GymMember::GymMember(std::string name, std::string accountnumber, Kind kind)
+    : mName(name), mAccountNumber(accountnumber), mKind(kind) {}
 
 int GymMember::workoutsThisMonth() { return mWorkoutCount; }
 
