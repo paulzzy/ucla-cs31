@@ -30,13 +30,14 @@ bool Gym::canWorkoutHere(GymMember m) {
 }
 
 bool Gym::checkin(GymMember& m, bool wantsCardio, bool wantsWeights,
-                  bool wantsTrack) {
+                  bool wantsPool, bool wantsTrack) {
     if (!canWorkoutHere(m)) {
         return false;
     }
 
     if (!(wantsCardio && hasCardio == false) &&
         !(wantsWeights && hasWeights == false) &&
+        !(wantsPool && hasPool == false) &&
         !(wantsTrack && hasTrack == false)) {
         m.newWorkout();
         return true;
