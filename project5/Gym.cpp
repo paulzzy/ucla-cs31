@@ -24,6 +24,8 @@ bool Gym::canWorkoutHere(GymMember m) {
         case OTHER:
             return mKind == OTHER;
             break;
+        default:
+            return false;
     }
 }
 
