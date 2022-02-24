@@ -45,3 +45,37 @@ bool Gym::checkin(GymMember& m, bool wantsCardio, bool wantsWeights,
         return false;
     }
 }
+
+bool Gym::hasCardioFeatures() { return hasCardio; }
+
+bool Gym::hasWeightsFeatures() { return hasWeights; }
+
+bool Gym::hasPoolFeatures() { return hasPool; }
+
+bool Gym::hasTrackFeatures() { return hasTrack; }
+
+Kind Gym::getKind() { return mKind; }
+
+std::string Gym::getKindAsString() {
+    switch (mKind) {
+        case OTHER:
+            return "OTHER";
+            break;
+        case REGULAR:
+            return "REGULAR";
+            break;
+        case PREMIER:
+            return "PREMIER";
+            break;
+        case EXECUTIVE:
+            return "EXECUTIVE";
+            break;
+        default:
+            return "SOMETHING_HAS_GONE_TERRIBLY_WRONG";
+            break;
+    }
+}
+
+std::string Gym::getLocation() { return mLocation; }
+
+std::string Gym::getName() { return mName; }

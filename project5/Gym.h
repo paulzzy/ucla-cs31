@@ -22,7 +22,23 @@ class Gym {
     bool canWorkoutHere(GymMember m);
 
     bool checkin(GymMember& m, bool wantsCardio, bool wantsWeights,
-                 bool wantsTrack);
+                 bool wantsPool, bool wantsTrack);
+
+    bool hasCardioFeatures();
+
+    bool hasWeightsFeatures();
+
+    bool hasPoolFeatures();
+
+    bool hasTrackFeatures();
+
+    Kind getKind();
+
+    std::string getKindAsString();
+
+    std::string getLocation();
+
+    std::string getName();
 };
 
 #endif
