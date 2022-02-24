@@ -13,13 +13,13 @@ void Gym::setFeatures(bool cardio, bool weights, bool pool, bool track) {
 bool Gym::canWorkoutHere(GymMember m) {
     switch (m.getKind()) {
         case EXECUTIVE:
-            return true;
+            return mKind == EXECUTIVE || mKind == PREMIER || mKind == REGULAR;
             break;
         case PREMIER:
-            return mKind == PREMIER || mKind == REGULAR || mKind == OTHER;
+            return mKind == PREMIER || mKind == REGULAR;
             break;
         case REGULAR:
-            return mKind == REGULAR || mKind == OTHER;
+            return mKind == REGULAR;
             break;
         case OTHER:
             return mKind == OTHER;
