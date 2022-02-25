@@ -9,6 +9,8 @@ class Gym {
     std::string mName;
     std::string mLocation;
     Kind mKind;
+    // Gym objects should not have any features by default, since they aren't
+    // specified by the constructor but must be manually set with setFeatures()
     bool hasCardio = false;
     bool hasWeights = false;
     bool hasPool = false;
