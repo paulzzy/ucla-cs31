@@ -6,48 +6,47 @@
 //  Copyright © 2017 Howard Stahl. All rights reserved.
 //
 
+// DOOT means a finished TODO
+// It's also very funny
+// "DOOT"
+
 #include "Player.h"
 
+namespace cs31 {
 
+Player::Player() : mDie(6), mScore(0), mRound(0) {}
 
-namespace cs31
-{
-    
-    Player::Player() : mDie( 6 ), mScore( 0 ), mRound( 0 )
-    {
-        
-    }
-    
-    // TODO: randomly roll the die and adjust the score for the current round accordingly
-    //  increase the score if the amount matches this round's value
-    int Player::roll( )
-    {
-        // stubbed out for now...
-        return( 0 );
+// DOOT: randomly roll the die and adjust the score for the current round
+// accordingly increase the score if the amount matches this round's value
+int Player::roll() {
+    mDie.roll();
+    const int die_value = mDie.getValue();
+
+    if (die_value == mRound) {
+        mScore++;
     }
 
-    // TODO: allow for cheating
-    // use the amount argument as this Player's roll
-    // adjust the score for the current round accordingly
-    // increase the score if the amount matches this round's value
-    int Player::roll( int amount )
-    {
-        // stubbed out for now...
-        return( 0 );
-    }
-    
-    // TODO: set the current round and reset the player's score to 0
-    void Player::setRound( int round )
-    {
-        // stubbed out for now...
-    }
-    
-    // TODO: return the score member variable
-    int  Player::getScore( ) const
-    {
-        // stubbed out for now...
-        return( 0 );
-    }
-    
-    
+    return die_value;
 }
+
+// DOOT: allow for cheating
+// use the amount argument as this Player's roll
+// adjust the score for the current round accordingly
+// increase the score if the amount matches this round's value
+int Player::roll(int amount) {
+    if (amount == mRound) {
+        mScore++;
+    }
+    return amount;
+}
+
+// DOOT: set the current round and reset the player's score to 0
+void Player::setRound(int round) {
+    mRound = round;
+    mScore = 0;
+}
+
+// DOOT: return the score member variable
+int Player::getScore() const { return mScore; }
+
+}  // namespace cs31
