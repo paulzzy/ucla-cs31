@@ -103,13 +103,15 @@ Bunco::ROUNDOUTCOME Bunco::determineRoundOutcome() {
     const int computer_score = mComputer.getScore();
     ROUNDOUTCOME result = ROUNDOUTCOME::NOTDECIDED;
 
-    if (human_score > computer_score) {
+    if (human_score == computer_score) {
+        return result;
+    } else if (human_score > computer_score) {
         result = ROUNDOUTCOME::HUMANWON;
     } else {
         result = ROUNDOUTCOME::COMPUTERWON;
     }
 
-    return (result);
+    return result;
 }
 
 // DOOT: count up the number of won rounds by each player
