@@ -124,14 +124,17 @@ Bunco::GAMEOUTCOME Bunco::determineGameOutcome() const {
     const int computer_rounds_won = mBoard.countUpComputerRoundWins();
     GAMEOUTCOME result = GAMEOUTCOME::GAMENOTOVER;
 
-    if (human_rounds_won == computer_rounds_won) {
+    if (mRound < 6) {
+        return result;
+    } else if (human_rounds_won == computer_rounds_won) {
         result = GAMEOUTCOME::TIEDGAME;
     } else if (human_rounds_won > computer_rounds_won) {
         result = GAMEOUTCOME::HUMANWONGAME;
     } else {
         result = GAMEOUTCOME::COMPUTERWONGAME;
     }
-    return (result);
+
+    return result;
 }
 
 // is the game over?
