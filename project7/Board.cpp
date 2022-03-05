@@ -53,7 +53,7 @@ std::string Board::display() const {
 int Board::countUpHumanRoundWins() const {
     int human_wins = 0;
     for (int i = 1; i <= 6; i++) {
-        human_wins = mBoardRow[i].didHumanWin() ? human_wins + 1 : human_wins;
+        human_wins += mBoardRow[i].didHumanWin();
     }
     return human_wins;
 }
@@ -62,8 +62,7 @@ int Board::countUpHumanRoundWins() const {
 int Board::countUpComputerRoundWins() const {
     int computer_wins = 0;
     for (int i = 1; i <= 6; i++) {
-        computer_wins =
-            mBoardRow[i].didComputerWin() ? computer_wins + 1 : computer_wins;
+        computer_wins += mBoardRow[i].didComputerWin();
     }
     return computer_wins;
 }
