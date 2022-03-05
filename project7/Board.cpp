@@ -30,14 +30,12 @@ void Board::setCurrentRound(int round) {
 
 // DOOT: set the human player to have won this current BoardRow
 void Board::markHumanAsWinner() {
-    BoardRow current_row = mBoardRow[mRound];
-    current_row.setHumanAsWinner();
+    mBoardRow[mRound].setHumanAsWinner();
 }
 
 // DOOT: set the computer player to have won this current BoardRow
 void Board::markComputerAsWinner() {
-    BoardRow current_row = mBoardRow[mRound];
-    current_row.setComputerAsWinner();
+    mBoardRow[mRound].setComputerAsWinner();
 }
 
 // stringify the Board
