@@ -89,7 +89,10 @@ int Bunco::computerPlay(const Die& d) {
 void Bunco::endTurn() {
     const int human_score = mHuman.getScore();
     const int computer_score = mComputer.getScore();
-    if (human_score > computer_score) {
+
+    if (human_score == computer_score) {
+        return;
+    } else if (human_score > computer_score) {
         mBoard.markHumanAsWinner();
     } else {
         mBoard.markComputerAsWinner();
