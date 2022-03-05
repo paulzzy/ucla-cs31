@@ -22,19 +22,24 @@ namespace cs31
     // array of BoardRow, this class can count up how many rounds each
     // player has won.
     // CS 31 students need to complete the TODO portions of this class
+
+    // DOOT means a finished TODO
+    // It's also very funny
+    // "DOOT"
+
     class Board
     {
     public:
         Board();
         // set the current round
         void setCurrentRound( int round );
-        // TODO set human as the round winner
+        // DOOT set human as the round winner
         void markHumanAsWinner();
-        // TODO set the computer as the round winner
+        // DOOT set the computer as the round winner
         void markComputerAsWinner();
-        // TODO how many rounds has the computer won so far?
+        // DOOT how many rounds has the computer won so far?
         int countUpComputerRoundWins( ) const;
-        // TODO how many rounds has the comptuer won so far?
+        // DOOT how many rounds has the comptuer won so far?
         int countUpHumanRoundWins( ) const;
         // stringify this Board
         std::string display( ) const;

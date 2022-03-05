@@ -18,14 +18,19 @@ namespace cs31
     // which round is currently being played and knows how to scores
     // it rolled value for the current round.
     // CS 31 students need to complete the TODO portions of this class
+
+    // DOOT means a finished TODO
+    // It's also very funny
+    // "DOOT"
+
     class Player
     {
     public:
         Player();
-        int roll( );                 // TODO randomly toss the Player's Die
-        int roll( int amount );      // TODO force a certain roll
-        void setRound( int round );  // TODO set current round, resetting the Player's score
-        int  getScore( ) const;      // TODO how many times has Player tossed the current round value?
+        int roll( );                 // DOOT randomly toss the Player's Die
+        int roll( int amount );      // DOOT force a certain roll
+        void setRound( int round );  // DOOT set current round, resetting the Player's score
+        int  getScore( ) const;      // DOOT how many times has Player tossed the current round value?
     private:
         Die mDie;    // the Player's Die
         int mScore;  // the Player's score for this round

@@ -21,6 +21,11 @@ namespace cs31
     // a Bunco Game.  Each Game is made up of a Board, two Players
     // and tracks the current round of play.
     // CS 31 students need to complete the TODO portions of this class
+
+    // DOOT means a finished TODO
+    // It's also very funny
+    // "DOOT"
+
     class Bunco
     {
     public:
@@ -42,15 +47,15 @@ namespace cs31
         // push forward round of play
         void nextRound(  );
         
-        // TODO let the human player randomly toss the die, returning the value rolled
+        // DOOT let the human player randomly toss the die, returning the value rolled
         int humanPlay( );
-        // TODO for testing purposes and force a particular rolled value
+        // DOOT for testing purposes and force a particular rolled value
         int humanPlay( const Die & d );
 
 
-        // TODO let the computer player randomly toss the die, returning the value rolled
+        // DOOT let the computer player randomly toss the die, returning the value rolled
         int computerPlay( );
-        // TODO for testing purposes and force a particular rolled value
+        // DOOT for testing purposes and force a particular rolled value
         int computerPlay( const Die & d );
         // called to end a round of play, updating the board if a player has won the round
         void endTurn();
